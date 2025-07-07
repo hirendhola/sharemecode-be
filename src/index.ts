@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import crypto from "crypto";
+import serverless from "serverless-http";
 
 dotenv.config();
 
@@ -187,6 +188,4 @@ app.get("/", (req, res) => {
   res.send("Server is running!!");
 });
 
-app.listen(3000, () => {
-  console.log("server is running in port 3000");
-});
+export const handler = serverless(app);
