@@ -4,11 +4,14 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun run --hot src/index.ts",
-    "build": "tsc && bun build src/index.ts --outdir dist --target bun"
+    "dev": "ts-node-dev --respawn src/index.ts",
+    "build": "tsc && esbuild src/index.ts --bundle --platform=node --format=esm --outdir=dist --target=node22 --external:express --external:mongoose --external:dotenv"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "esbuild": "^0.25.6",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
   },
   "peerDependencies": {
     "typescript": "^5"
